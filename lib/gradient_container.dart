@@ -1,14 +1,15 @@
-import 'package:first_app/style_text.dart';
 import 'package:flutter/material.dart';
 
   const startAlignment = Alignment.topLeft;
   const endAlignment = Alignment.bottomRight;
 
+
 class GradientContainer extends StatelessWidget {
   
-   const GradientContainer({super.key, required this.colors});
+   const GradientContainer(this.startColor, this.endColor, {super.key});
 
-   final List<Color> colors;
+   final Color startColor;
+   final Color endColor;
 
   @override
   Widget build(BuildContext context) {
@@ -16,27 +17,28 @@ class GradientContainer extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: colors,
+          colors: [
+            startColor,
+            endColor,
+          ],
           begin: startAlignment,
           end: endAlignment,
         ),
       ),
-      child: const Center(
-        child: StyleText('Hello World!'),
+      child: Center(
+        child: Image.asset('assets/images/dice-2.png'),
       ),
     );
     
   }
 }
 
-//--another way to do it--
-
+// --another way to do it--
 // class GradientContainer extends StatelessWidget {
   
-//    const GradientContainer(this.startColor, this.endColor, {super.key});
+//    const GradientContainer({super.key, required this.colors});
 
-//    final Color startColor;
-//    final Color endColor;
+//    final List<Color> colors;
 
 //   @override
 //   Widget build(BuildContext context) {
@@ -44,10 +46,7 @@ class GradientContainer extends StatelessWidget {
 //     return Container(
 //       decoration: BoxDecoration(
 //         gradient: LinearGradient(
-//           colors: [
-//             startColor,
-//             endColor,
-//           ],
+//           colors: colors,
 //           begin: startAlignment,
 //           end: endAlignment,
 //         ),
@@ -59,4 +58,5 @@ class GradientContainer extends StatelessWidget {
     
 //   }
 // }
+
 
